@@ -1,11 +1,14 @@
-# Import reduce from functools
-from functools import reduce
+def my_reduce(func, iterable):  #created reduce function
+    result = iterable[0]  # Start with the first element, initialized result as first value
+    for item in iterable[1:]:  # Iterate through the rest
+        result = func(result, item)  # Apply function cumulatively
+    return result
 
-# Define the list of numbers
-list_of_numbers = [6, 7, 2, 3, 4, 5, 1]
+# Example list of numbers
+numbers = [1, 2, 3, 4, 5]
 
-# Calculate the total product using reduce and a lambda function
-total_product = reduce(lambda a, b: a * b, list_of_numbers)
+# Using lambda and custom reduce function to calculate product
+total_product = my_reduce(lambda a, b: a * b, numbers)
 
 # Print the result
-print("Product of all numbers from the list:",total_product)
+print("Product of all numbers from the list:", total_product)
